@@ -2,13 +2,12 @@
 import React from "react";
 // components
 import MainLayout from "../layouts/MainLayout";
-import Button from "../components/Button";
+import SliderCard from "../components/SliderCard";
 
 const HomeScreen = () => {
   return (
     <MainLayout>
-      <p>Home Screen</p>
-      <Button />
+      <SliderCard />
     </MainLayout>
   );
 };
