@@ -2,30 +2,10 @@
 // libs
 import React, { memo } from "react";
 
-const Card = ({
-  type,
-  text,
-  size,
-  onClick,
-  draggable,
-  disabled,
-  idx,
-  animateNew,
-  animateDiscard,
-  changeTabIndex,
-  blackCard,
-  ariaHidden,
-  cardsInPlay,
-  discarded,
-}) => {
+const Card = ({ mentorId, name, nickname, desc }) => {
   return (
     <div>
-      <img
-        src="https://i.picsum.photos/id/28/200/300.jpg?hmac=PtGtIbRuuZW5gEPGm0h1Y-koEaki3vffOYcq3TdSAlA"
-        height="300"
-        width="200"
-        alt="card"
-      />
+      <img src="https://via.placeholder.com/200x300.webp" height="300" width="200" alt="card" />
     </div>
   );
 };

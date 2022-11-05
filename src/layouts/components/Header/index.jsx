@@ -1,15 +1,13 @@
 // libs
-import React, { useState } from "react";
+import React from "react";
 // others
+import UserContext from "~/context/userContext";
 import logo from "~/assets/logo.png";
 import userImg from "~/assets/user.jpg";
 import styles from "./Header.module.scss";
 
 const Header = () => {
-  const [user] = useState({
-    name: "Nguyễn Đại Hiệp",
-    mentorId: "51900683",
-  });
+  const [user] = UserContext();
 
   return (
     <div className={styles["header-wrapper"]}>

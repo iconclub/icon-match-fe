@@ -11,4 +11,40 @@ export default [
     nickname: "Khôi Chúa Hề 🤡",
     desc: "Chuyên về front end và một ít giải thuật mô hình, hướng nội nhưng social hơi kinh, đẹp trai và việc học phải gọi là đỉnh, cái gì cũng biết mỗi tội không biết cách biến em làm của riêng mình 🤡.",
   },
+  {
+    mentorId: "519K0014",
+    name: "Nguyễn Đình Minh Khôi",
+    nickname: "Khôi Chúa Hề 🤡",
+    desc: "Chuyên về front end và một ít giải thuật mô hình, hướng nội nhưng social hơi kinh, đẹp trai và việc học phải gọi là đỉnh, cái gì cũng biết mỗi tội không biết cách biến em làm của riêng mình 🤡.",
+  },
+  {
+    mentorId: "519K0015",
+    name: "Nguyễn Đình Minh Khôi",
+    nickname: "Khôi Chúa Hề 🤡",
+    desc: "Chuyên về front end và một ít giải thuật mô hình, hướng nội nhưng social hơi kinh, đẹp trai và việc học phải gọi là đỉnh, cái gì cũng biết mỗi tội không biết cách biến em làm của riêng mình 🤡.",
+  },
+  {
+    mentorId: "519K0016",
+    name: "Nguyễn Đình Minh Khôi",
+    nickname: "Khôi Chúa Hề 🤡",
+    desc: "Chuyên về front end và một ít giải thuật mô hình, hướng nội nhưng social hơi kinh, đẹp trai và việc học phải gọi là đỉnh, cái gì cũng biết mỗi tội không biết cách biến em làm của riêng mình 🤡.",
+  },
+  {
+    mentorId: "519K0017",
+    name: "Nguyễn Đình Minh Khôi",
+    nickname: "Khôi Chúa Hề 🤡",
+    desc: "Chuyên về front end và một ít giải thuật mô hình, hướng nội nhưng social hơi kinh, đẹp trai và việc học phải gọi là đỉnh, cái gì cũng biết mỗi tội không biết cách biến em làm của riêng mình 🤡.",
+  },
+  {
+    mentorId: "519K0018",
+    name: "Nguyễn Đình Minh Khôi",
+    nickname: "Khôi Chúa Hề 🤡",
+    desc: "Chuyên về front end và một ít giải thuật mô hình, hướng nội nhưng social hơi kinh, đẹp trai và việc học phải gọi là đỉnh, cái gì cũng biết mỗi tội không biết cách biến em làm của riêng mình 🤡.",
+  },
+  {
+    mentorId: "519K0019",
+    name: "Nguyễn Đình Minh Khôi",
+    nickname: "Khôi Chúa Hề 🤡",
+    desc: "Chuyên về front end và một ít giải thuật mô hình, hướng nội nhưng social hơi kinh, đẹp trai và việc học phải gọi là đỉnh, cái gì cũng biết mỗi tội không biết cách biến em làm của riêng mình 🤡.",
+  },
 ];

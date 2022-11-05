@@ -1,55 +1,44 @@
-import React, { useMemo, useState } from "react";
+// libs
+import React, { useMemo, useState, useCallback, useEffect } from "react";
 import Carousel from "react-spring-3d-carousel";
 // components
 import Card from "../Card";
+// others
+import MentorList from "~/dataSources/MentorList";
 
 const SliderCard = () => {
   const [show, setShow] = useState("");
 
   const slides = useMemo(
     () =>
-      [
-        {
-          key: 1,
-          content: <Card />,
-        },
-        {
-          key: 2,
-          content: <Card />,
-        },
-        {
-          key: 3,
-          content: <Card />,
-        },
-        {
-          key: 4,
-          content: <Card />,
-        },
-        {
-          key: 5,
-          content: <Card />,
-        },
-        {
-          key: 6,
-          content: <Card />,
-        },
-        {
-          key: 7,
-          content: <Card />,
-        },
-        {
-          key: 8,
-          content: <Card />,
-        },
-      ].map((slide, index) => {
-        return { ...slide, onClick: () => setShow(index) };
+      MentorList.map((slide, index) => {
+        return { key: slide.mentorId, onClick: () => setShow(index), content: <Card {...slide} /> };
       }),
     []
   );
 
+  const handleKeyDown = useCallback((e) => {
+    const keyCode = e.keyCode;
+    if (keyCode === 39) {
+      setShow((pre) => pre + 1);
+    } else if (keyCode === 37) {
+      setShow((pre) => pre - 1);
+    } else if (keyCode === 13) {
+      console.log(keyCode);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
   return (
-    <div style={{ width: "40%", height: "500px", margin: "0 auto" }}>
-      <Carousel slides={slides} goToSlide={show} offsetRadius="4" showNavigation />
+    <div style={{ width: "560px", height: "500px", margin: "0 auto" }}>
+      <Carousel slides={slides} goToSlide={show} offsetRadius="4" />
     </div>
   );
 };

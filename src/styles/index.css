@@ -2,20 +2,3 @@ body {
   font-family: "Baloo 2", cursive;
   box-sizing: border-box !important;
 }
-
-.css-1qzevvg {
-  position: absolute !important;
-  top: 50% !important;
-  right: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  transform: translateY(-138%) !important;
-}
-
-.css-1qzevvg img:first-child {
-  border-radius: 50%;
-}
-
-.css-1qzevvg img:last-child {
-  border-radius: 50% !important;
-}
