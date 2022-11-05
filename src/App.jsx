@@ -1,8 +1,10 @@
 // libs
 import React from "react";
+// components
+import HomeScreen from "./views/HomeScreen";
 
 const App = () => {
-  return <div className="App">Finish config</div>;
+  return <HomeScreen />;
 };
 
 export default App;
