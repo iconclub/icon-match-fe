@@ -12,5 +12,6 @@ export default defineConfig({
       "~": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "src"),
     },
   },
-  base: "/icon-match-fe/",
+  // eslint-disable-next-line no-undef
+  base: process.env.NODE_ENV === "production" ? "/icon-match-fe/" : "",
 });
