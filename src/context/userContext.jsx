@@ -4,7 +4,7 @@ import React, { createContext, useState, useMemo, useContext } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({ name: "Guest" });
+  const [user, setUser] = useState({ name: "Guest", userId: "51900683" });
 
   const value = useMemo(() => [user, setUser], [user, setUser]);
 
