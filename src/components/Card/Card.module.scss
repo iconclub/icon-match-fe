@@ -11,6 +11,9 @@
   overflow: hidden;
   box-sizing: border-box;
   cursor: grabbing;
+  user-select: none; /* Safari */
+  user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 
   .match-button {
     position: absolute;
