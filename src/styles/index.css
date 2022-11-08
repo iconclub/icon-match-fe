@@ -1,0 +1,39 @@
+body {
+  position: relative;
+  height: 100vh;
+  font-family: "Baloo 2", cursive;
+  box-sizing: border-box !important;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

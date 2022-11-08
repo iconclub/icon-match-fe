@@ -1,0 +1,63 @@
+.card-wrapper {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 6px 2px #998482;
+  overflow: hidden;
+  box-sizing: border-box;
+  cursor: grabbing;
+  user-select: none; /* Safari */
+  user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+
+  .match-button {
+    position: absolute;
+    right: 50%;
+    left: 50%;
+    bottom: 8px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgb(134 106 106);
+    border-radius: 50%;
+    background-image: url("../../assets/favorite.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    transform: translateX(-50%);
+    transition: transform 0.5s ease-in-out;
+    box-shadow: 0 0 5px 0 #4b3939;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  .match-full {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 18px;
+    margin: 0;
+    color: #c56b21;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .nickname {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 48px;
+    color: #000;
+    margin: 0;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .desc {
+    font-size: 0.8rem;
+  }
+}

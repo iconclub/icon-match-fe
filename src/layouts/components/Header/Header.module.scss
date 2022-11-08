@@ -1,0 +1,52 @@
+.header-wrapper {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3rem;
+  background-color: rgb(92 75 75);
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    height: inherit;
+    margin: 0 auto;
+
+    .logo {
+      width: 2.2rem;
+      height: 2.2rem;
+
+      &-image {
+        width: inherit;
+        height: inherit;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-name {
+        margin-right: 0.5rem;
+        margin-top: 0.1rem;
+        color: white;
+      }
+
+      &-image {
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        cursor: pointer;
+        box-sizing: border-box;
+
+        &:hover {
+          border: 2px solid rgb(85 206 61 / 34.9%);
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
