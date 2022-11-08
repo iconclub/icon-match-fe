@@ -4,7 +4,7 @@ import React, { memo } from "react";
 import UserContext from "~/context/userContext";
 import styles from "./Card.module.scss";
 
-const Card = ({ mentorId, nickname, desc, avt, full }) => {
+const Card = ({ _id, nickname, description, mentees }) => {
   const [user] = UserContext();
 
   const onSubmitMatch = (mentorId, voterId) => {
@@ -16,15 +16,15 @@ const Card = ({ mentorId, nickname, desc, avt, full }) => {
     <div
       className={styles["card-wrapper"]}
       style={{
-        backgroundImage: `url("${avt}")`,
+        backgroundImage: "url('/avatar.webp')",
       }}
     >
       <p className={styles["nickname"]}>{nickname}</p>
-      <article className={styles["desc"]}>{desc}</article>
-      {!full ? (
+      <article className={styles["desc"]}>{description}</article>
+      {mentees.length < 2 ? (
         <button
           className={styles["match-button"]}
-          onClick={() => onSubmitMatch(mentorId, user.userId)}
+          onClick={() => onSubmitMatch(_id, user.userId)}
         />
       ) : (
         <p className={styles["match-full"]}>Đã đầy</p>

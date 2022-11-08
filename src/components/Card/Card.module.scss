@@ -1,7 +1,7 @@
 .card-wrapper {
   position: relative;
-  width: 200px;
-  height: 300px;
+  width: 260px;
+  height: 400px;
   padding: 1rem;
   border-radius: 0.4rem;
   background-repeat: no-repeat;
@@ -10,10 +10,11 @@
   box-shadow: 0 0 6px 2px #998482;
   overflow: hidden;
   box-sizing: border-box;
-  cursor: grabbing;
-  user-select: none; /* Safari */
+  cursor: grabbing; /* Safari */
   user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+  background-color: white;
+  z-index: 999;
 
   .match-button {
     position: absolute;

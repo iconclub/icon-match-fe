@@ -1,21 +1,14 @@
 // libs
-import React, { useMemo, useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Carousel from "react-spring-3d-carousel";
 // components
 import Card from "../Card";
 // others
-import MentorList from "~/dataSources/MentorList";
+import instance from "~/utils/https-server";
 
 const SliderCard = () => {
   const [show, setShow] = useState("");
-
-  const slides = useMemo(
-    () =>
-      MentorList.map((slide, index) => {
-        return { key: slide.mentorId, onClick: () => setShow(index), content: <Card {...slide} /> };
-      }),
-    []
-  );
+  const [slides, setSlides] = useState([]);
 
   const handleKeyDown = useCallback((e) => {
     const keyCode = e.keyCode;
@@ -36,9 +29,23 @@ const SliderCard = () => {
     };
   }, [handleKeyDown]);
 
+  const getMentors = useCallback(async () => {
+    const mentorList = await instance.get("/api/mentors");
+
+    const temp = mentorList.mentors.map((slide, index) => {
+      return { key: slide._id, onClick: () => setShow(index), content: <Card {...slide} /> };
+    });
+
+    setSlides(temp);
+  }, []);
+
+  useEffect(() => {
+    getMentors();
+  }, []);
+
   return (
-    <div style={{ width: "560px", height: "500px", margin: "0 auto" }}>
-      <Carousel slides={slides} goToSlide={show} offsetRadius="4" />
+    <div style={{ width: "960px", height: "600px", margin: "0 auto" }}>
+      <Carousel slides={slides} goToSlide={show} offsetRadius="20" />
     </div>
   );
 };
