@@ -1,10 +1,16 @@
-// libs
 import React from "react";
-// components
-import HomeScreen from "./views/HomeScreen";
+
+import "react-toastify/dist/ReactToastify.css";
+import Header from "./components/Header/Header";
+import SliderCard from "./components/SliderCard/SliderCard";
 
 const App = () => {
-  return <HomeScreen />;
+  return (
+    <div className="app">
+      <Header />
+      <SliderCard />
+    </div>
+  );
 };
 
 export default App;
