@@ -10,6 +10,7 @@ import Card from "../Card/Card";
 import Spinner from "./Spinner";
 import { getMentors } from "~/apis/mentor.api";
 import { sendChooseMentor } from "~/apis/match.api";
+import { AxiosError } from "axios";
 // import wait from "~/utils/wait";
 
 Modal.setAppElement("#root");
@@ -81,9 +82,7 @@ const SliderCard = () => {
 
       setSlides(slides);
     } catch (err) {
-      toast.error(err.message, {
-        toastId: "list-of-mentors",
-      });
+      toast.error(err.message, { toastId: "list-of-mentors" });
     }
   }, []);
 
@@ -108,14 +107,15 @@ const SliderCard = () => {
 
       const data = await sendChooseMentor(payload);
       if (menteeStudentId === data.menteeStudentId && mentorChoosing.mentorId === data.mentorId) {
-        toast.success("Matched successfully", {
-          toastId: "match-success",
-        });
+        toast.success("Matched successfully", { toastId: "match-success" });
       }
     } catch (err) {
-      toast.error(err.message, {
-        toastId: "mentor-match",
-      });
+      if (err instanceof AxiosError) {
+        toast.error(err.response.data.message, { toastId: "server-match-error" });
+        return;
+      }
+
+      toast.error(err.message, { toastId: "client-match-error" });
     }
 
     closeModal();
