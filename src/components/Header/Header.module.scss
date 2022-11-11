@@ -1,13 +1,12 @@
 .header {
   width: 100%;
-  padding: 12px 24px;
+  padding: 12px 8vw;
   background-color: rgb(92, 75, 75);
 
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
     margin: 0px auto;
   }
 
@@ -20,5 +19,6 @@
     margin: 0px;
     color: white;
     font-size: 2.2rem;
+    text-align: end;
   }
 }
