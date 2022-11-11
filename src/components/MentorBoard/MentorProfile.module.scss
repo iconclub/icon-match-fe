@@ -1,0 +1,29 @@
+.profile {
+  width: 100%;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__nickname {
+    margin: 0px 10px;
+  }
+
+  &__num-mentees {
+    margin-left: auto;
+  }
+
+  &__mentees {
+    list-style: none;
+    margin: 0px 10px;
+  }
+}
