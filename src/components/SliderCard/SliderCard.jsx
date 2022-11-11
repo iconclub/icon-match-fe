@@ -71,7 +71,7 @@ const SliderCard = () => {
       }
 
       const payload = {
-        menteeStudentId,
+        menteeStudentId: menteeStudentId.toUpperCase(),
         mentorId: mentorChoosing.mentorId,
       };
 
