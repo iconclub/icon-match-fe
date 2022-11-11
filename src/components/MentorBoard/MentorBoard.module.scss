@@ -1,0 +1,24 @@
+.board {
+  width: 450px;
+  height: calc(100vh - 80px);
+  min-height: 680px;
+  overflow: auto;
+  padding: 20px;
+
+  &__title {
+    margin: 0px 10px 0px;
+    text-align: center;
+  }
+
+  &__error {
+    text-align: center;
+    color: red;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .board {
+    display: none;
+  }
+}
