@@ -135,15 +135,14 @@ const SliderCard = () => {
   return (
     <div className={styles["slider-card"]}>
       {slides.length > 0 ? (
-        <>
-          <div className={styles["slider-card__content"]}>
-            <Carousel slides={slides} goToSlide={goToSlide} offsetRadius={2} />
-          </div>
-          <Navigation setGoToSlide={setGoToSlide} />
-        </>
+        <div className={styles["slider-card__content"]}>
+          <Carousel slides={slides} goToSlide={goToSlide} offsetRadius={2} />
+        </div>
       ) : (
         <Spinner />
       )}
+
+      <Navigation setGoToSlide={setGoToSlide} />
 
       <Modal
         isOpen={modalIsOpen}
