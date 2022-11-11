@@ -1,23 +1,23 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { toast } from "react-toastify";
 
 import styles from "./MentorBoard.module.scss";
 import MentorProfile from "./MentorProfile";
 import { getMentors } from "~/apis/mentor.api";
+import { useMentorContext } from "~/contexts/MentorContext";
 
 const Board = () => {
-  const [profiles, setProfiles] = useState([]);
+  const { mentors, setMentors, setGoToMentor } = useMentorContext();
 
   const getMentorList = useCallback(async () => {
     try {
-      const { mentors } = await getMentors();
-      if (!mentors) {
+      const data = await getMentors();
+      if (!data) {
         throw new Error("List of mentors is empty");
       }
-
-      setProfiles(mentors);
+      setMentors(data.mentors);
     } catch (err) {
-      toast.error(err.message, { toastId: "list-of-mentors" });
+      toast.error(err.message, { toastId: "fetch-mentors" });
     }
   }, []);
 
@@ -29,7 +29,10 @@ const Board = () => {
     <div className={styles["board"]}>
       <h1 className={styles["board__title"]}>Mentor Board</h1>
       <div id={styles["board__profiles"]}>
-        {profiles.length > 0 && profiles.map((mentor, i) => <MentorProfile key={i} {...mentor} />)}
+        {mentors.length > 0 &&
+          mentors.map((mentor, i) => (
+            <MentorProfile key={i} {...mentor} handleClick={() => setGoToMentor(i)} />
+          ))}
       </div>
     </div>
   );

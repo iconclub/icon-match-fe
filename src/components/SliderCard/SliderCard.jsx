@@ -1,17 +1,16 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Carousel from "react-spring-3d-carousel";
-import { v4 as uuidv4 } from "uuid";
 import Modal from "react-modal";
+import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
+import { AxiosError } from "axios";
 
 import styles from "./SliderCard.module.scss";
 import Navigation from "./Navigation";
 import Card from "../Card/Card";
 import Spinner from "./Spinner";
-import { getMentors } from "~/apis/mentor.api";
 import { sendChooseMentor } from "~/apis/match.api";
-import { AxiosError } from "axios";
-// import wait from "~/utils/wait";
+import { useMentorContext } from "~/contexts/MentorContext";
 
 Modal.setAppElement("#root");
 
@@ -33,11 +32,12 @@ const modalStyles = {
 };
 
 const SliderCard = () => {
-  const [goToSlide, setGoToSlide] = useState(0);
   const [slides, setSlides] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [mentorChoosing, setMentorChoosing] = useState(null);
   const [menteeStudentId, setMenteeStudentId] = useState("");
+
+  const { goToMentor, setGoToMentor, mentors } = useMentorContext();
 
   const openModal = useCallback(() => {
     setIsOpen(true);
@@ -50,46 +50,11 @@ const SliderCard = () => {
   const handleKeyDown = useCallback((e) => {
     switch (e.key) {
       case "ArrowRight":
-        setGoToSlide((prev) => prev + 1);
+        setGoToMentor((prev) => prev + 1);
         break;
       case "ArrowLeft":
-        setGoToSlide((prev) => prev - 1);
+        setGoToMentor((prev) => prev - 1);
         break;
-    }
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
-
-  const getMentorList = useCallback(async () => {
-    try {
-      const { mentors } = await getMentors();
-      if (!mentors) {
-        throw new Error("List of mentors is empty");
-      }
-
-      // await wait(2);
-
-      const slides = mentors.map((mentor, i) => {
-        return {
-          key: uuidv4(),
-          onClick: () => setGoToSlide(i),
-          content: (
-            <Card
-              {...mentor}
-              openModal={openModal}
-              setMentorChoosing={setMentorChoosing}
-              setGoToSlide={setGoToSlide}
-            />
-          ),
-        };
-      });
-
-      setSlides(slides);
-    } catch (err) {
-      toast.error(err.message, { toastId: "list-of-mentors" });
     }
   }, []);
 
@@ -98,11 +63,9 @@ const SliderCard = () => {
       if (!mentorChoosing) {
         throw new Error("You have to choose a mentor first");
       }
-
       if (!menteeStudentId) {
         throw new Error("You need to enter student ID first");
       }
-
       if (!/\w22[\d|h|H|k|K]\d{4}/.test(menteeStudentId)) {
         throw new Error("Invalid Student ID");
       }
@@ -111,7 +74,6 @@ const SliderCard = () => {
         menteeStudentId,
         mentorId: mentorChoosing.mentorId,
       };
-
       const data = await sendChooseMentor(payload);
       if (menteeStudentId === data.menteeStudentId && mentorChoosing.mentorId === data.mentorId) {
         toast.success("Matched successfully", { toastId: "match-success" });
@@ -121,7 +83,6 @@ const SliderCard = () => {
         toast.error(err.response.data.message, { toastId: "server-match-error" });
         return;
       }
-
       toast.error(err.message, { toastId: "client-match-error" });
     }
 
@@ -129,20 +90,40 @@ const SliderCard = () => {
   };
 
   useEffect(() => {
-    getMentorList();
-  }, []);
+    const slides = mentors.map((mentor, i) => {
+      return {
+        key: uuidv4(),
+        onClick: () => setGoToMentor(i),
+        content: (
+          <Card
+            {...mentor}
+            openModal={openModal}
+            setMentorChoosing={setMentorChoosing}
+            setGoToSlide={setGoToMentor}
+          />
+        ),
+      };
+    });
+
+    setSlides(slides);
+  }, [mentors]);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
 
   return (
     <div className={styles["slider-card"]}>
       {slides.length > 0 ? (
         <div className={styles["slider-card__content"]}>
-          <Carousel slides={slides} goToSlide={goToSlide} offsetRadius={2} />
+          <Carousel slides={slides} goToSlide={goToMentor} offsetRadius={2} />
         </div>
       ) : (
         <Spinner />
       )}
 
-      <Navigation setGoToSlide={setGoToSlide} />
+      {slides.length > 0 && <Navigation setGoToSlide={setGoToMentor} />}
 
       <Modal
         isOpen={modalIsOpen}

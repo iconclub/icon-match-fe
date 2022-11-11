@@ -1,29 +1,34 @@
 .profile {
   width: 100%;
+  padding: 10px 20px;
 
   &__header {
     display: flex;
-    align-items: center;
-    margin-top: 12px;
   }
 
   &__avatar {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     object-fit: cover;
     border-radius: 50%;
   }
 
   &__nickname {
-    margin: 0px 10px;
+    margin: 4px 10px;
   }
 
   &__num-mentees {
-    margin-left: auto;
+    margin: 4px 0px 4px auto;
   }
 
   &__mentees {
     list-style: none;
-    margin: 0px 10px;
+    margin: 0px 5px;
+  }
+
+  &:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
   }
 }

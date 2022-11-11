@@ -3,9 +3,9 @@ import React from "react";
 import styles from "./MentorProfile.module.scss";
 import hinhMeoImg from "~/assets/hinh-meo.png";
 
-const MentorProfile = ({ avatar = hinhMeoImg, nickname, mentees }) => {
+const MentorProfile = ({ avatar = hinhMeoImg, nickname, mentees, handleClick }) => {
   return (
-    <div className={styles["profile"]}>
+    <div className={styles["profile"]} onClick={handleClick}>
       <div className={styles["profile__header"]}>
         <img src={avatar} alt="mentor-avatar" className={styles["profile__avatar"]} />
         <h3 className={styles["profile__nickname"]}>{nickname}</h3>
