@@ -37,7 +37,7 @@ const SliderCard = () => {
   const [mentorChoosing, setMentorChoosing] = useState(null);
   const [menteeStudentId, setMenteeStudentId] = useState("");
 
-  const { goToMentor, setGoToMentor, mentors } = useMentorContext();
+  const { goToMentor, setGoToMentor, mentors, getMentorList } = useMentorContext();
 
   const openModal = useCallback(() => {
     setIsOpen(true);
@@ -74,9 +74,11 @@ const SliderCard = () => {
         menteeStudentId,
         mentorId: mentorChoosing.mentorId,
       };
+
       const data = await sendChooseMentor(payload);
       if (menteeStudentId === data.menteeStudentId && mentorChoosing.mentorId === data.mentorId) {
         toast.success("Matched successfully", { toastId: "match-success" });
+        getMentorList();
       }
     } catch (err) {
       if (err instanceof AxiosError) {
