@@ -76,7 +76,14 @@ const SliderCard = () => {
         return {
           key: uuidv4(),
           onClick: () => setGoToSlide(i),
-          content: <Card {...mentor} openModal={openModal} setMentorChoosing={setMentorChoosing} />,
+          content: (
+            <Card
+              {...mentor}
+              openModal={openModal}
+              setMentorChoosing={setMentorChoosing}
+              setGoToSlide={setGoToSlide}
+            />
+          ),
         };
       });
 
@@ -120,10 +127,6 @@ const SliderCard = () => {
 
     closeModal();
   };
-
-  // const chooseMentor = useCallback(async () => {
-  //   if (!mentorChoosing) return;
-  // });
 
   useEffect(() => {
     getMentorList();
@@ -186,6 +189,7 @@ const SliderCard = () => {
           </button>
         </div>
       </Modal>
+
       <ToastContainer
         position="top-right"
         autoClose={3000}
