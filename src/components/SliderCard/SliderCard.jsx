@@ -66,7 +66,7 @@ const SliderCard = () => {
       if (!menteeStudentId) {
         throw new Error("You need to enter student ID first");
       }
-      if (!/\w22[\d|h|H|k|K]\d{4}/.test(menteeStudentId)) {
+      if (!/\w22[\d|h|H|k|K|i|I]\d{4}/.test(menteeStudentId)) {
         throw new Error("Invalid Student ID");
       }
 
