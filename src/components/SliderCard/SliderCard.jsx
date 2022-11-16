@@ -66,7 +66,11 @@ const SliderCard = () => {
       if (!menteeStudentId) {
         throw new Error("You need to enter student ID first");
       }
+<<<<<<< HEAD
       if (!/\w22[\d|h|H|k|K|v|V|c|C]\d{4}/.test(menteeStudentId)) {
+=======
+      if (!/\w22[\d|h|H|k|K|i|I]\d{4}/.test(menteeStudentId)) {
+>>>>>>> c83df2e9e24fa8d2bb8df82408ef54474d203688
         throw new Error("Invalid Student ID");
       }
 
